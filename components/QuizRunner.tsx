@@ -159,9 +159,10 @@ export default function QuizRunner({ questions, answers, onAnswer, onSubmit, onQ
           <span className={`tag s${q.subject}`}>科目{q.subject === 1 ? "一" : "二"}</span>
           <span style={{ fontSize: 13, color: "var(--ink-3)" }}>{q.chapter}</span>
           {q.tier === "must" && <span className="tag must">必考</span>}
+                {q.hot && <span className="tag hot">考古重點</span>}
         </div>
 
-        <h2 style={{ fontSize: 20, lineHeight: 1.6, fontWeight: 700, margin: "0 0 22px", textWrap: "balance" }}>
+        <h2 style={{ fontSize: 20, lineHeight: 1.6, fontWeight: 700, margin: "0 0 22px", textWrap: "balance", whiteSpace: "pre-line" }}>
           {q.q}
         </h2>
 

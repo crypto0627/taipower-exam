@@ -130,6 +130,7 @@ export default function ResultView({ questions, answers, onRetry, onHome }: Prop
                 <span className={`tag s${q.subject}`}>科目{q.subject === 1 ? "一" : "二"}</span>
                 <span style={{ fontSize: 12.5, color: "var(--ink-3)" }}>{q.chapter}</span>
                 {q.tier === "must" && <span className="tag must">必考</span>}
+                {q.hot && <span className="tag hot">考古重點</span>}
                 <span
                   style={{
                     marginLeft: "auto",
@@ -142,7 +143,7 @@ export default function ResultView({ questions, answers, onRetry, onHome }: Prop
                 </span>
               </div>
 
-              <p style={{ fontSize: 16.5, fontWeight: 700, lineHeight: 1.6, margin: "0 0 14px" }}>{q.q}</p>
+              <p style={{ fontSize: 16.5, fontWeight: 700, lineHeight: 1.6, margin: "0 0 14px", whiteSpace: "pre-line" }}>{q.q}</p>
 
               <div style={{ display: "grid", gap: 6, marginBottom: 16 }}>
                 {q.options.map((opt, oi) => {
@@ -184,6 +185,7 @@ export default function ResultView({ questions, answers, onRetry, onHome }: Prop
                   padding: "13px 16px",
                   fontSize: 14.5,
                   lineHeight: 1.75,
+                  whiteSpace: "pre-line",
                 }}
               >
                 <strong style={{ display: "block", fontSize: 12.5, letterSpacing: "0.04em", marginBottom: 4 }}>

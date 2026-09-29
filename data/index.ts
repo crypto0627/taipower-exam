@@ -4,6 +4,7 @@ import { s1PowerSystem } from "./questions/s1-power-system";
 import { s1Dispatch } from "./questions/s1-dispatch";
 import { s1Ancillary } from "./questions/s1-ancillary";
 import { s1Market } from "./questions/s1-market";
+import { s1PastExam } from "./questions/s1-past-exam";
 
 import { s2General } from "./questions/s2-general";
 import { s2Participation } from "./questions/s2-participation";
@@ -13,6 +14,7 @@ import { s2Settlement } from "./questions/s2-settlement";
 import { s2Compliance } from "./questions/s2-compliance";
 import { s2Capacity } from "./questions/s2-capacity";
 import { s2Future } from "./questions/s2-future";
+import { s2PastExam } from "./questions/s2-past-exam";
 
 /**
  * 全題庫。
@@ -25,6 +27,7 @@ export const QUESTION_BANK: Question[] = [
   ...s1Dispatch,
   ...s1Ancillary,
   ...s1Market,
+  ...s1PastExam,
   ...s2General,
   ...s2Participation,
   ...s2Products,
@@ -33,6 +36,7 @@ export const QUESTION_BANK: Question[] = [
   ...s2Compliance,
   ...s2Capacity,
   ...s2Future,
+  ...s2PastExam,
 ];
 
 /** 開發時檢查 id 是否重複 —— 重複會讓抽題去重誤判 */

@@ -23,7 +23,12 @@ export interface Question {
   /** 章節名稱，結果頁會依此統計弱點 */
   chapter: string;
   tier: Tier;
-  /** 題幹 */
+  /**
+   * 考古題重點：歷屆考古題中被標註「高機率會考」的題目。
+   * 勾選必考題時，這些題目每份試卷都一定會出現（不受 MUST_RATIO 輪替影響）。
+   */
+  hot?: boolean;
+  /** 題幹（可用 \n 換行，例如計算題的表格資料） */
   q: string;
   /** 選項，固定四個；作答時會被打亂 */
   options: [string, string, string, string];

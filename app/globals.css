@@ -140,6 +140,11 @@ a:focus-visible {
 .tag.must {
   color: var(--danger);
 }
+.tag.hot {
+  color: var(--danger);
+  background: var(--danger-wash);
+  font-weight: 700;
+}
 .tag.core {
   color: var(--signal);
 }

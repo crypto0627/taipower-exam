@@ -10,6 +10,7 @@ interface Props {
     subject1: number;
     subject2: number;
     must: number;
+    hot: number;
     chapters: { chapter: string; count: number }[];
   };
   onStart: (config: QuizConfig) => void;
@@ -113,7 +114,8 @@ export default function StartScreen({ stats, onStart }: Props) {
               style={{ width: 17, height: 17, accentColor: "var(--accent)" }}
             />
             <span style={{ fontSize: 15 }}>
-              優先抽必考題（題庫共 {stats.must} 題），最多佔一份試卷的 {Math.round(MUST_RATIO * 100)}%
+              優先抽必考題（題庫共 {stats.must} 題），最多佔一份試卷的 {Math.round(MUST_RATIO * 100)}%；
+              其中 {stats.hot} 題考古題重點每份都會出現
             </span>
           </label>
         </Field>

@@ -43,7 +43,7 @@ export const CORE_SHARE = 0.6;
  * 抽出一份試卷。
  *
  * 規則：
- * 1. `pinMustQuestions` 為真時，先抽必考題（must），最多佔 MUST_RATIO。
+ * 1. `pinMustQuestions` 為真時，先放入全部考古題重點（hot），再抽其他必考題（must），合計最多佔 MUST_RATIO。
  * 2. 依 科目一 3 : 科目二 7 算出各科在整份試卷的目標題數，扣掉必考題已佔的名額後補齊。
  * 3. 同科目內，重要題（core）與細節題（detail）按 CORE_SHARE 分配，任一層不足時互相補位。
  * 4. 最後打亂題序，並逐題打亂選項。
@@ -70,7 +70,9 @@ export function drawQuiz(pool: readonly Question[], config: QuizConfig): DrawnQu
   };
 
   if (pinMustQuestions) {
-    take(shuffle(available.filter((q) => q.tier === "must")), Math.ceil(size * MUST_RATIO));
+    const mustQuota = Math.ceil(size * MUST_RATIO);
+    take(shuffle(available.filter((q) => q.hot)), mustQuota);
+    take(shuffle(available.filter((q) => q.tier === "must")), mustQuota - picked.length);
   }
 
   const subjects: Subject[] = subject ? [subject] : [1, 2];
@@ -125,6 +127,7 @@ export function poolStats(pool: readonly Question[]) {
     subject1: pool.filter((q) => q.subject === 1).length,
     subject2: pool.filter((q) => q.subject === 2).length,
     must: pool.filter((q) => q.tier === "must").length,
+    hot: pool.filter((q) => q.hot).length,
     chapters: [...byChapter.entries()].map(([chapter, count]) => ({ chapter, count })),
   };
 }
